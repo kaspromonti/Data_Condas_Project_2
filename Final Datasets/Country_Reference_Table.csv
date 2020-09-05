@@ -1,206 +1,213 @@
 incountryid,countryName,region
-1,Afghanistan,South Asia
+9,Australia,Oceania
+104,New Zealand,Oceania
+209,Vanuatu,Austrailia and New Zealand
 2,Albania,Central and Eastern Europe
-3,Algeria,Middle East and North Africa
-4,Andorra,Western Europe
-5,Angola,Sub-Saharan Africa
+23,Bosnia and Herzegovina,Central and Eastern Europe
+27,Bulgaria,Central and Eastern Europe
+44,Croatia,Central and Eastern Europe
+47,Czech Republic,Central and Eastern Europe
+58,Estonia,Central and Eastern Europe
+59,Hungary,Central and Eastern Europe
+74,Kosovo,Central and Eastern Europe
+78,Latvia,Central and Eastern Europe
+83,Lithuania,Central and Eastern Europe
+85,Macedonia,Central and Eastern Europe
+97,Montenegro,Central and Eastern Europe
+192,North Macedonia,Central and Eastern Europe
+116,Poland,Central and Eastern Europe
+120,Romania,Central and Eastern Europe
+125,Serbia,Central and Eastern Europe
+128,Slovakia,Central and Eastern Europe
+129,Slovenia,Central and Eastern Europe
+8,Armenia,Commonwealth of Independent States
+11,Azerbaijan,Commonwealth of Independent States
+16,Belarus,Commonwealth of Independent States
+66,Georgia,Commonwealth of Independent States
+72,Kazakhstan,Commonwealth of Independent States
+76,Kyrgyzstan,Commonwealth of Independent States
+95,Moldova,Commonwealth of Independent States
+121,Russia,Commonwealth of Independent States
+143,Tajikistan,Commonwealth of Independent States
+150,Turkmenistan,Commonwealth of Independent States
+152,Ukraine,Commonwealth of Independent States
+157,Uzbekistan,Commonwealth of Independent States
+37,China,East Asia
+58,Hong Kong S.A.R. of China,East Asia
+70,Japan,East Asia
+,Macau,East Asia
+96,Mongolia,East Asia
+185,North Korea,East Asia
+132,South Korea,East Asia
+142,Taiwan Province of China,East Asia
 6,Antigua and Barbuda,Latin America and Caribbean
 7,Argentina,Latin America and Caribbean
-8,Armenia,Commonwealth of Independent States
-9,Australia,Austrailia and New Zealand
-10,Austria,Western Europe
-11,Azerbaijan,Commonwealth of Independent States
 12,Bahamas,Latin America and Caribbean
-13,Bahrain,Middle East and North Africa
-14,Bangladesh,South Asia
 15,Barbados,Latin America and Caribbean
-16,Belarus,Commonwealth of Independent States
-17,Belgium,Western Europe
 18,Belize,Latin America and Caribbean
-19,Benin,Sub-Saharan Africa
 20,Bermuda,Latin America and Caribbean
-21,Bhutan,South Asia
 22,Bolivia,Latin America and Caribbean
-23,Bosnia and Herzegovina,Central and Eastern Europe
-24,Botswana,Sub-Saharan Africa
 25,Brazil,Latin America and Caribbean
+36,Chile,Latin America and Caribbean
+38,Colombia,Latin America and Caribbean
+43,Costa Rica,Latin America and Caribbean
+45,Cuba,Latin America and Caribbean
+50,Dominica,Latin America and Caribbean
+51,Dominican Republic,Latin America and Caribbean
+53,Ecuador,Latin America and Caribbean
+55,El Salvador,Latin America and Caribbean
+180,Grenada,Latin America and Caribbean
+54,Guatemala,Latin America and Caribbean
+182,Guyana,Latin America and Caribbean
+56,Haiti,Latin America and Caribbean
+57,Honduras,Latin America and Caribbean
+69,Jamaica,Latin America and Caribbean
+,Martinique,Latin America and Caribbean
+94,Mexico,Latin America and Caribbean
+105,Nicaragua,Latin America and Caribbean
+112,Panama,Latin America and Caribbean
+113,Paraguay,Latin America and Caribbean
+114,Peru,Latin America and Caribbean
+118,Puerto Rico,Latin America and Caribbean
+199,Saint Kitts and Nevis,Latin America and Caribbean
+200,Saint Lucia,Latin America and Caribbean
+201,Saint Vincent and the Grenadines,Latin America and Caribbean
+147,Trinidad and Tobago,Latin America and Caribbean
+156,Uruguay,Latin America and Caribbean
+158,Venezuela,Latin America and Caribbean
+3,Algeria,Middle East and North Africa
+13,Bahrain,Middle East and North Africa
+49,Djibouti,Middle East and North Africa
+54,Egypt,Middle East and North Africa
+181,Guinea-Bissau,Middle East and North Africa
+63,Iran,Middle East and North Africa
+64,Iraq,Middle East and North Africa
+66,Israel,Middle East and North Africa
+71,Jordan,Middle East and North Africa
+75,Kuwait,Middle East and North Africa
+79,Lebanon,Middle East and North Africa
+82,Libya,Middle East and North Africa
+98,Morocco,Middle East and North Africa
+193,Oman,Middle East and North Africa
+111,Palestinian Territories,Middle East and North Africa
+119,Qatar,Middle East and North Africa
+123,Saudi Arabia,Middle East and North Africa
+137,Suriname,Middle East and North Africa
+141,Syria,Middle East and North Africa
+148,Tunisia,Middle East and North Africa
+149,Turkey,Middle East and North Africa
+153,United Arab Emirates,Middle East and North Africa
+160,Yemen,Middle East and North Africa
+32,Canada,North America
+155,United States,North America
+1,Afghanistan,South Asia
+14,Bangladesh,South Asia
+21,Bhutan,South Asia
 26,Brunei,South Asia
-27,Bulgaria,Central and Eastern Europe
+52,East Timor,South Asia
+61,India,South Asia
+89,Maldives,South Asia
+102,Nepal,South Asia
+110,Pakistan,South Asia
+130,Somalia,South Asia
+135,Sri Lanka,South Asia
+61,Fiji,Oceania
+184,Kiribati,South Pacific
+189,Marshall Islands,Oceania
+190,Micronesia,Oceania
+194,Palau,Oceania
+195,Papua New Guinea,Oceania
+202,Samoa,Oceania
+205,Solomon Islands,Oceania
+207,Tonga,Oceania
+208,Tuvalu,Oceania
+30,Cambodia,Southeast Asia
+62,Indonesia,Southeast Asia
+77,Laos,Southeast Asia
+88,Malaysia,Southeast Asia
+100,Myanmar,Southeast Asia
+115,Philippines,Southeast Asia
+127,Singapore,Southeast Asia
+145,Thailand,Southeast Asia
+159,Vietnam,Southeast Asia
+5,Angola,Sub-Saharan Africa
+19,Benin,Sub-Saharan Africa
+24,Botswana,Sub-Saharan Africa
 28,Burkina Faso,Sub-Saharan Africa
 29,Burundi,Sub-Saharan Africa
-30,Cambodia,Southeast Asia
 31,Cameroon,Sub-Saharan Africa
-32,Canada,North America
 33,Cape Verde,Sub-Saharan Africa
 34,Central African Republic,Sub-Saharan Africa
 35,Chad,Sub-Saharan Africa
-36,Chile,Latin America and Caribbean
-37,China,East Asia
-38,Colombia,Latin America and Caribbean
 39,Comoros,Sub-Saharan Africa
 40,Congo,Sub-Saharan Africa
 41,Congo (Brazzaville),Sub-Saharan Africa
 42,Congo (Kinshasa),Sub-Saharan Africa
-43,Costa Rica,Latin America and Caribbean
-44,Croatia,Central and Eastern Europe
-45,Cuba,Latin America and Caribbean
-46,Cyprus,Western Europe
-47,Czech Republic,Central and Eastern Europe
-48,Denmark,Western Europe
-49,Djibouti,Middle East and North Africa
-50,Dominica,Latin America and Caribbean
-51,Dominican Republic,Latin America and Caribbean
-52,East Timor,South Asia
-53,Ecuador,Latin America and Caribbean
-54,Egypt,Middle East and North Africa
-55,El Salvador,Latin America and Caribbean
 56,Equatorial Guinea,Sub-Saharan Africa
 57,Eritrea,Sub-Saharan Africa
-58,Estonia,Central and Eastern Europe
 59,Eswatini (Swaziland),Sub-Saharan Africa
 60,Ethiopia,Sub-Saharan Africa
-61,Fiji,South Pacific
-62,Finland,Western Europe
-63,France,Western Europe
 64,Gabon,Sub-Saharan Africa
 65,Gambia,Sub-Saharan Africa
-66,Georgia,Commonwealth of Independent States
-67,Germany,Western Europe
 68,Ghana,Sub-Saharan Africa
+55,Guinea,Sub-Saharan Africa
+68,Ivory Coast,Sub-Saharan Africa
+73,Kenya,Sub-Saharan Africa
+80,Lesotho,Sub-Saharan Africa
+81,Liberia,Sub-Saharan Africa
+86,Madagascar,Sub-Saharan Africa
+87,Malawi,Sub-Saharan Africa
+90,Mali,Sub-Saharan Africa
+92,Mauritania,Sub-Saharan Africa
+93,Mauritius,Sub-Saharan Africa
+99,Mozambique,Sub-Saharan Africa
+101,Namibia,Sub-Saharan Africa
+106,Niger,Sub-Saharan Africa
+107,Nigeria,Sub-Saharan Africa
+122,Rwanda,Sub-Saharan Africa
+124,Senegal,Sub-Saharan Africa
+204,Seychelles,Sub-Saharan Africa
+126,Sierra Leone,Sub-Saharan Africa
+131,South Africa,Sub-Saharan Africa
+133,South Sudan,Sub-Saharan Africa
+136,Sudan,Sub-Saharan Africa
+138,Swaziland,Sub-Saharan Africa
+144,Tanzania,Sub-Saharan Africa
+146,Togo,Sub-Saharan Africa
+151,Uganda,Sub-Saharan Africa
+161,Zambia,Sub-Saharan Africa
+162,Zimbabwe,Sub-Saharan Africa
+4,Andorra,Western Europe
+10,Austria,Western Europe
+17,Belgium,Western Europe
+46,Cyprus,Western Europe
+48,Denmark,Western Europe
+,England,Western Europe
+62,Finland,Western Europe
+63,France,Western Europe
+67,Germany,Western Europe
 ,Gibraltar,Western Europe
 53,Greece,Western Europe
 179,Greenland,Western Europe
-180,Grenada,Latin America and Caribbean
-54,Guatemala,Latin America and Caribbean
-55,Guinea,Sub-Saharan Africa
-181,Guinea-Bissau,Middle East and North Africa
-182,Guyana,Latin America and Caribbean
-56,Haiti,Latin America and Caribbean
-57,Honduras,Latin America and Caribbean
-58,Hong Kong S.A.R. of China,East Asia
-59,Hungary,Central and Eastern Europe
+,Guernsey / Jersey,Western Europe
 60,Iceland,Western Europe
-61,India,South Asia
-62,Indonesia,Southeast Asia
-63,Iran,Middle East and North Africa
-64,Iraq,Middle East and North Africa
 65,Ireland,Western Europe
-66,Israel,Middle East and North Africa
+,Isle Of Man,Western Europe
 67,Italy,Western Europe
-68,Ivory Coast,Sub-Saharan Africa
-69,Jamaica,Latin America and Caribbean
-70,Japan,East Asia
-71,Jordan,Middle East and North Africa
-72,Kazakhstan,Commonwealth of Independent States
-73,Kenya,Sub-Saharan Africa
-184,Kiribati,South Pacific
-74,Kosovo,Central and Eastern Europe
-75,Kuwait,Middle East and North Africa
-76,Kyrgyzstan,Commonwealth of Independent States
-77,Laos,Southeast Asia
-78,Latvia,Central and Eastern Europe
-79,Lebanon,Middle East and North Africa
-80,Lesotho,Sub-Saharan Africa
-81,Liberia,Sub-Saharan Africa
-82,Libya,Middle East and North Africa
 187,Liechtenstein,Western Europe
-83,Lithuania,Central and Eastern Europe
 84,Luxembourg,Western Europe
-85,Macedonia,Central and Eastern Europe
-86,Madagascar,Sub-Saharan Africa
-87,Malawi,Sub-Saharan Africa
-88,Malaysia,Southeast Asia
-89,Maldives,South Asia
-90,Mali,Sub-Saharan Africa
 91,Malta,Western Europe
-189,Marshall Islands,South Pacific
-,Martinique,Latin America and Caribbean
-92,Mauritania,Sub-Saharan Africa
-93,Mauritius,Sub-Saharan Africa
-94,Mexico,Latin America and Caribbean
-190,Micronesia,South Pacific
-95,Moldova,Commonwealth of Independent States
 191,Monaco,Western Europe
-96,Mongolia,East Asia
-97,Montenegro,Central and Eastern Europe
-98,Morocco,Middle East and North Africa
-99,Mozambique,Sub-Saharan Africa
-100,Myanmar,Southeast Asia
-101,Namibia,Sub-Saharan Africa
-102,Nepal,South Asia
 103,Netherlands,Western Europe
-104,New Zealand,Austrailia and New Zealand
-105,Nicaragua,Latin America and Caribbean
-106,Niger,Sub-Saharan Africa
-107,Nigeria,Sub-Saharan Africa
-185,North Korea,East Asia
-192,North Macedonia,Central and Eastern Europe
 108,Northern Cyprus,Western Europe
 109,Norway,Western Europe
-193,Oman,Middle East and North Africa
-110,Pakistan,South Asia
-194,Palau,South Pacific
-111,Palestinian Territories,Middle East and North Africa
-112,Panama,Latin America and Caribbean
-195,Papua New Guinea,South Pacific
-113,Paraguay,Latin America and Caribbean
-114,Peru,Latin America and Caribbean
-115,Philippines,Southeast Asia
-116,Poland,Central and Eastern Europe
 117,Portugal,Western Europe
-118,Puerto Rico,Latin America and Caribbean
-119,Qatar,Middle East and North Africa
-120,Romania,Central and Eastern Europe
-121,Russia,Commonwealth of Independent States
-122,Rwanda,Sub-Saharan Africa
-199,Saint Kitts and Nevis,Latin America and Caribbean
-200,Saint Lucia,Latin America and Caribbean
-201,Saint Vincent and the Grenadines,Latin America and Caribbean
-202,Samoa,South Pacific
 203,San Marino,Western Europe
-123,Saudi Arabia,Middle East and North Africa
-124,Senegal,Sub-Saharan Africa
-125,Serbia,Central and Eastern Europe
-204,Seychelles,Sub-Saharan Africa
-126,Sierra Leone,Sub-Saharan Africa
-127,Singapore,Southeast Asia
-128,Slovakia,Central and Eastern Europe
-129,Slovenia,Central and Eastern Europe
-205,Solomon Islands,South Pacific
-130,Somalia,South Asia
-131,South Africa,Sub-Saharan Africa
-132,South Korea,East Asia
-133,South Sudan,Sub-Saharan Africa
+,Scotland,Western Europe
 134,Spain,Western Europe
-135,Sri Lanka,South Asia
-136,Sudan,Sub-Saharan Africa
-137,Suriname,Middle East and North Africa
-138,Swaziland,Sub-Saharan Africa
 139,Sweden,Western Europe
 140,Switzerland,Western Europe
-141,Syria,Middle East and North Africa
-142,Taiwan Province of China,East Asia
-143,Tajikistan,Commonwealth of Independent States
-144,Tanzania,Sub-Saharan Africa
-145,Thailand,Southeast Asia
-146,Togo,Sub-Saharan Africa
-207,Tonga,South Pacific
-147,Trinidad and Tobago,Latin America and Caribbean
-148,Tunisia,Middle East and North Africa
-149,Turkey,Middle East and North Africa
-150,Turkmenistan,Commonwealth of Independent States
-208,Tuvalu,South Pacific
-151,Uganda,Sub-Saharan Africa
-152,Ukraine,Commonwealth of Independent States
-153,United Arab Emirates,Middle East and North Africa
 154,United Kingdom,Western Europe
-155,United States,North America
-156,Uruguay,Latin America and Caribbean
-157,Uzbekistan,Commonwealth of Independent States
-209,Vanuatu,Austrailia and New Zealand
 210,Vatican City,Western Europe
-158,Venezuela,Latin America and Caribbean
-159,Vietnam,Southeast Asia
-160,Yemen,Middle East and North Africa
-161,Zambia,Sub-Saharan Africa
-162,Zimbabwe,Sub-Saharan Africa
+,Wales,Western Europe
+,,
