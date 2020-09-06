@@ -1,4 +1,4 @@
-incountryid,countryName,region
+InCountryID,countryName,region
 1,Afghanistan,South Asia
 2,Albania,Central and Eastern Europe
 3,Algeria,Middle East and North Africa
@@ -62,7 +62,7 @@ incountryid,countryName,region
 61,Honduras,Latin America and Caribbean
 62,Eritrea,Sub-Saharan Africa
 63,Estonia,Central and Eastern Europe
-64,Hong Kong S.A.R. of China,East Asia
+64,Hong Kong,East Asia
 65,Hungary,Central and Eastern Europe
 66,Eswatini (Swaziland),Sub-Saharan Africa
 67,Ethiopia,Sub-Saharan Africa
@@ -156,7 +156,7 @@ incountryid,countryName,region
 155,Sweden,Western Europe
 156,Switzerland,Western Europe
 157,Syria,Middle East and North Africa
-158,Taiwan Province of China,East Asia
+158,Taiwan,East Asia
 159,Tajikistan,Commonwealth of Independent States
 160,Tanzania,Sub-Saharan Africa
 161,Thailand,Southeast Asia
@@ -214,3 +214,5 @@ incountryid,countryName,region
 213,Cook Islands,Oceania
 214,Nauru,Oceania
 215,Niue,Oceania
+216,Trinidad & Tobago,
+217,Somaliland Region,Sub-Saharan Africa
