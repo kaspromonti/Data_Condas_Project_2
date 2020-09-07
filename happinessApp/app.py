@@ -23,7 +23,7 @@ Workhours = Base.classes.workhours
 def index():
 	return render_template('index.html')
 
-@app.route("/chlorandlinedata", methods=["GET","POST"]) 
+@app.route("/chorandlinedata", methods=["GET","POST"]) 
 def chlorandlinedata(): 
 	session = Session(engine)
 	sel = [CountryReference.countryname,Happiness.happinessrating,Happiness.year]
