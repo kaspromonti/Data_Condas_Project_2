@@ -24,7 +24,7 @@ def index():
 	return render_template('index.html')
 
 @app.route("/chorandlinedata", methods=["GET","POST"]) 
-def chlorandlinedata(): 
+def chorandlinedata(): 
 	session = Session(engine)
 	sel = [CountryReference.countryname,Happiness.happinessrating,Happiness.year]
 
