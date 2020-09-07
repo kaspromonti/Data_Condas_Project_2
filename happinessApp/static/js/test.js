@@ -1,4 +1,4 @@
-$(function getData(){
+$(function() {
 	$.ajax({
 		type: "GET",
 		url: "/chlorandlinedata",
@@ -8,31 +8,16 @@ $(function getData(){
 	});
 });
 
-$("#posttest").click(function () {
+$("#posttest").click(function() {
 	date = 2019
 	$.ajax({
-		type: "POST",
+		type: 'POST',
 		url: '/chlorandlinedata',
-		data: date,
-		success: function(){
-			console.log(date)
+		datatype: 'json',
+		data: JSON.stringify(date),
+		contentType:"application/json",
+		success: function(data){
+			console.log(data)
 		}
 	});
 });
-	
-
-
-
-
-
-	// $(function getDataWithDate(){
-	// 	date = 2019
-	// 	$.ajax({
-	// 		type: "POST",
-	// 		url: "/chlorandlinedata",
-	// 		data: date,
-	// 		success: function(){
-	// 			console.log(date)
-	// 		}
-	// 	})
-	// });

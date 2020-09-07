@@ -29,8 +29,7 @@ def chlorandlinedata():
 	sel = [CountryReference.countryname,Happiness.happinessrating,Happiness.year]
 
 	if request.method == "POST":
-		year = date
-		print(year)
+		year = request.get_json()
 		data = session.query(*sel).\
 					filter(CountryReference.incountryid == Happiness.excountryid).\
 					filter(Happiness.year == year).all()
@@ -50,7 +49,6 @@ def scatterdata():
 			   Happiness.dystopiaresidual, Happiness.year]
 
 	if request.method == "POST":
-		print("In Post")
 		year = returnData[0]
 
 		data = session.query(*sel).\
