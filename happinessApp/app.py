@@ -60,7 +60,9 @@ def scatterdata():
 	session.close()
 	return jsonify(data)
 
-
+@app.route("/survey", methods=["GET", "POST"])
+def survey():
+	return render_template("survey.html")
 
 if __name__ == "__main__":
 	app.run(debug=True)

@@ -3,9 +3,9 @@
 $(function() {
 	$.ajax({
 		type: "GET",
-		url: "/scatterdata",
+		url: "/chorandlinedata",
 		success: function(data){
-			console.log(data)
+			console.log("success")
 		}
 	});
 });
@@ -14,7 +14,7 @@ $(function() {
 //a date is required as it passes back to the date to act as
 // a filter in the flask route 
 $("#posttest").click(function() {
-	date = 2019
+	date = 2020
 	$.ajax({
 		type: 'POST',
 		url: '/scatterdata',
@@ -22,7 +22,7 @@ $("#posttest").click(function() {
 		data: JSON.stringify(date),
 		contentType:"application/json",
 		success: function(data){
-			console.log(data)
+			getScatterData(data);
 		}
 	});
 });

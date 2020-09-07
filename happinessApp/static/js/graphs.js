@@ -1,34 +1,35 @@
-d3.csv("happiness_data_2015-2020.csv").then(function(data){
+function getScatterData(data){
+    console.log(data)
     data.forEach(function(data){
-        data.happinessRating=+data.happinessRating
-        data.healthyLifeExpectancy=+data.healthyLifeExpectancy
-        data.year=+data.year
+        data[2]=+data[2]
+        data[5]=+data[5]
+        data[10]=+data[10]
     });    
- console.log(data)
     x_axis=data.map(function(row){
-        return row.healthyLifeExpectancy
+        return row[2]
 
     });
-    var year= 2020;
-    var filter_data=data.filter(function(row){
-        return row.year===year
+    console.log(data)
+    console.log(x_axis)
+    // var year= 2020;
+    // var filter_data=data.filter(function(row){
+    //     return row.year===year
+
+    // });
+    x_axis=data.map(function(row){
+        return row[5]
 
     });
-    x_axis=filter_data.map(function(row){
-        return row.healthyLifeExpectancy
 
+    y_axis=data.map(function(row){
+        return row[2]
     });
 
-    y_axis=filter_data.map(function(row){
-        return row.happinessRating
-    });
-
-    var region=filter_data.map(function(row){
-        return row.region
+    var region=data.map(function(row){
+        return row[1]
     });
 
 // console.log(data.length)
-console.log(filter_data)
     var trace1 = {
         x: x_axis,
         y: y_axis,
@@ -78,4 +79,4 @@ console.log(filter_data)
   Plotly.newPlot("plot", [trace1],layout);
     
     
-});
+};
