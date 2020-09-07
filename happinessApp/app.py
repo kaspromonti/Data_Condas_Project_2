@@ -49,8 +49,7 @@ def scatterdata():
 			   Happiness.dystopiaresidual, Happiness.year]
 
 	if request.method == "POST":
-		year = returnData[0]
-
+		year = request.get_json()
 		data = session.query(*sel).\
 					  filter(CountryReference.incountryid == Happiness.excountryid).\
 					  filter(Happiness.year == year).all()
