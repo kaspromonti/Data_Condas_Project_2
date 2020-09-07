@@ -40,6 +40,7 @@ def chlorandlinedata():
 
 	session.close()
 	return jsonify(data)
+
 @app.route("/scatterdata", methods=["GET","POST"])
 def scatterdata():
 	session = Session(engine)
@@ -49,6 +50,7 @@ def scatterdata():
 			   Happiness.dystopiaresidual, Happiness.year]
 
 	if request.method == "POST":
+		print("In Post")
 		year = returnData[0]
 
 		data = session.query(*sel).\
