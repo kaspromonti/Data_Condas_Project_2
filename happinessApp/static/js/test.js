@@ -8,15 +8,31 @@ $(function getData(){
 	});
 });
 
+$("#posttest").click(function () {
+	date = 2019
+	$.ajax({
+		type: "POST",
+		url: '/chlorandlinedata',
+		data: date,
+		success: function(){
+			console.log(date)
+		}
+	});
+});
+	
 
-// $(function getDataWithDate(){
-// 	date = 2019
-// 	$.ajax({
-// 		type: "POST",
-// 		url: "/chlorandlinedata",
-// 		data: date,
-// 		success: function(){
-// 			console.log(date)
-// 		}
-// 	})
-// })
+
+
+
+
+	// $(function getDataWithDate(){
+	// 	date = 2019
+	// 	$.ajax({
+	// 		type: "POST",
+	// 		url: "/chlorandlinedata",
+	// 		data: date,
+	// 		success: function(){
+	// 			console.log(date)
+	// 		}
+	// 	})
+	// });

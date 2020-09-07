@@ -29,8 +29,8 @@ def chlorandlinedata():
 	sel = [CountryReference.countryname,Happiness.happinessrating,Happiness.year]
 
 	if request.method == "POST":
-		year = returnData[0]
-
+		year = date
+		print(year)
 		data = session.query(*sel).\
 					filter(CountryReference.incountryid == Happiness.excountryid).\
 					filter(Happiness.year == year).all()
