@@ -7,39 +7,38 @@
 			<h3>The following survey will help us to determine which country you would be happiest living in.</h3>
 		</div>
 	</div><br>
-
+	<div class="row">
+		<div class="col-md-12">
+			<h5>Please provide your information below:</h5>
+		</div>
+	</div><hr>
 	<form>
 		<div class="form-row">
 			<div class="col-md-6">
 				<div class="form-group">
-				<h3>Please provide your information below:</h3>
-					<label for="nameinput">First Name</label>
-					<input type="text" class="form-control" id="firstnameinput" placeholder="First Name">
-				</div>
-			</div><br>
-		</div>
-		<div class="form-row">
-			<div class="col-md-6">
-				<div class="form-group">
-					<label for="ageinput">Last Name</label>
-					<input type="text" class="form-control" id="lastnameinput" placeholdder="Last Name">
+					<label for="inputname">First Name</label>
+					<input type="text" class="form-control" id="inputfirst" placeholder="First Name">
 				</div>
 			</div>
-	  	</div><br>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="inputLast">Last Name</label>
+					<input type="text" class="form-control" id="inputlast" placeholdder="Last Name">
+				</div>
+			</div>
+		</div>
 		<div class="form-row">
-		    <div class="form-group col-md-2">
+		    <div class="form-group col-md-6">
 		     	<label for="inputZip">Zip Code</label>
 		      	<input type="text" class="form-control" id="inputZip" placeholder="Zip Code">
-			</div>	
-		</div><br>
-		<div class="form-row">
+			</div>
 			<div class="form-group col-md-6">
 		    	<label for="inputEmail4">Email</label>
 		    	<input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-		    </div>
-		</div><br>
+		    </div>	
+		</div>
 		<div class="form-row">
-			<div class="form-group col-md-6">
+			<div class="form-group col-md-3">
 		    	<label for="genderinput">Gender:</label>
 		    	<select class="form-control" id="genderinput">
 		      		<option>Female</option>
@@ -47,8 +46,10 @@
 		      		<option>I prefer not to answer</option>
 		    	</select>
 			</div>
-		</div><br>
-		<div class="form-row">
+			<div class="form-group col-md-3">
+				<label for="inputage">Age</label>
+				<input type="text" class="form-control" id="inputage" placeholder="Age">
+			</div>
 			<div class="form-group col-md-6">
 		    	<label for="genderinput">Annual Income Earned:</label>
 		    	<select class="form-control" id="genderinput">
@@ -60,14 +61,19 @@
 		      		<option> >$251,000 per year</option>
 		    	</select>
 			</div>
-		</div><br>
-	</form>
+		</div>
+	</form><hr><br>
+
+	<div class="row">
+		<div class="col-md-12">
+			<h5>There are a number of factors that will be used to to determine the location that is best suited for you based on your selections below. Please answer the following questions to the best of your ability.</h5>
+		</div>
+	</div><br>
 
 	<form>
 		<div class="row">
 			<div class="col-md-6">
 			  	<div class="form-group">
-			  	<h3>There are a number of factors that will be used to to determine the location that is best suited for you based on your selections below. Please answer the following questions to the best of your ability.</h3>
 			    	<label for="regioninput">Select the region in the world where you would most like to live:</label>
 			    	<select class="form-control" id="regioninput">
 			      		<option>Australia and New Zealand</option>
@@ -85,7 +91,7 @@
 			      		<option>Western Europe</option>
 			    	</select>
 				</div>
-			</div><br>
+			</div>
 			<div class="col-md-6">
 			  	<div class="form-group">
 			    	<label for="sportinput">Choose your favorite sport from the list below:</label>
@@ -112,40 +118,43 @@
 			    	</select>
 				</div>
 			</div><br>
-			<div class="col-md-6">
-				<div class="form-check">
-				  <p>What is your favorite type of Alcohol to drink?</p>
-				  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-				  <label class="form-check-label" for="defaultCheck1">Beer</label>
-				</div>
-				<div class="form-check">
-				  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-				  <label class="form-check-label" for="defaultCheck1">Wine</label>
-				</div>
-				<div class="form-check">
-				  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-				  <label class="form-check-label" for="defaultCheck1">Spirits</label>
-				</div>
-				<div class="form-check">
-				  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-				  <label class="form-check-label" for="defaultCheck1">I don't drink alcohol</label>
-				</div>
-			</div><br>
-			<div class="col-md-6">
-				<div class="form-check">
-				  <p>How important is overall fitness to you?</p>
-				  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-				  <label class="form-check-label" for="defaultCheck1">Extremely Important</label>
-				</div>
-				<div class="form-check">
-				  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-				  <label class="form-check-label" for="defaultCheck1">Somewhat Important</label>
-				</div>
-				<div class="form-check">
-				  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-				  <label class="form-check-label" for="defaultCheck1">Not Very Important</label>
-				</div>
-			</div><br>
+		</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-check">
+					  <p>What is your favorite type of Alcohol to drink?</p>
+					  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+					  <label class="form-check-label" for="defaultCheck1">Beer</label>
+					</div>
+					<div class="form-check">
+					  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+					  <label class="form-check-label" for="defaultCheck1">Wine</label>
+					</div>
+					<div class="form-check">
+					  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+					  <label class="form-check-label" for="defaultCheck1">Spirits</label>
+					</div>
+					<div class="form-check">
+					  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+					  <label class="form-check-label" for="defaultCheck1">I don't drink alcohol</label>
+					</div>
+				</div><br>
+				<div class="col-md-6">
+					<div class="form-check">
+					  <p>How important is overall fitness to you?</p>
+					  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+					  <label class="form-check-label" for="defaultCheck1">Extremely Important</label>
+					</div>
+					<div class="form-check">
+					  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+					  <label class="form-check-label" for="defaultCheck1">Somewhat Important</label>
+					</div>
+					<div class="form-check">
+					  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+					  <label class="form-check-label" for="defaultCheck1">Not Very Important</label>
+					</div>
+				</div><br>
+			</div>
 			<div class="col-md-6">
 				<div class="form-check">
 				  <p>Choose your stance on the legalizational of marijuana for MEDICINAL purposes:</p>

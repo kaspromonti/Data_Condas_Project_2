@@ -5,13 +5,13 @@ $(function() {
 		type: "GET",
 		url: "/chorandlinedata",
 		success: function(data){
-			console.log("success")
+			getChoroandlinedata(data);
 		}
 	});
 });
 
-//This function performs a POST request on the selected url
-//a date is required as it passes back to the date to act as
+// This function performs a POST request on the selected url
+// a date is required as it passes back to the date to act as
 // a filter in the flask route 
 $("#posttest").click(function() {
 	date = 2020
