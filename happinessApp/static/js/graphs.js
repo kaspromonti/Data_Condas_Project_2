@@ -1,3 +1,17 @@
+$(function() {
+    date = 2020
+    $.ajax({
+        type: 'POST',
+        url: '/scatterdata',
+        datatype: 'json',
+        data: JSON.stringify(date),
+        contentType:"application/json",
+        success: function(data){
+            getScatterData(data);
+        }
+    });
+});
+
 $("#posttest").click(function() {
     date = 2019
     $.ajax({
