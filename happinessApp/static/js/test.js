@@ -5,7 +5,7 @@ $(function() {
 		type: "GET",
 		url: "/chorandlinedata",
 		success: function(data){
-			getChoroandlinedata(data);
+			console.log(data)
 		}
 	});
 });
