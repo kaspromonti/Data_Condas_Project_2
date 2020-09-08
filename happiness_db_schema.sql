@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS Sports;
 DROP TABLE IF EXISTS HealthCare;
 DROP TABLE IF EXISTS WorkHours;
 DROP TABLE IF EXISTS CountryReference;
+DROP TABLE IF EXISTS userData; 
 
 CREATE TABLE CountryReference (
 	InCountryID SERIAL PRIMARY KEY,
@@ -75,3 +76,27 @@ CREATE TABLE WorkHours (
 	avgHours FLOAT,
 	FOREIGN KEY (ExCountryID) REFERENCES CountryReference (InCountryID)
 );
+
+CREATE Table userdata(
+	id serial PRIMARY KEY, 
+	firsName VARCHAR, 
+	lastName VARCHAR, 
+	zipcode INTEGER, 
+	email VARCHAR, 
+	gender VARCHAR, 
+	age INTEGER, 
+	income INTEGER, 
+	favRegion VARCHAR, 
+	favSport VARCHAR, 
+	favAlcohol VARCHAR, 
+	fitness VARCHAR, 
+	marijuanaMedical VARCHAR,
+	marijuanaRec VARCHAR, 
+	uniHealthcare BOOLEAN, 
+	hoursWorked INT,
+	gdpPerCap VARCHAR, 
+	SocialEnv VARCHAR, 
+	lifeChoices VARCHAR, 
+	generosity VARCHAR, 
+	govTrust VARCHAR
+)
