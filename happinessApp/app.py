@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 
 app = Flask(__name__) 
 
-engine = create_engine(f"postgresql+psycopg2://postgres:swf24R!@localhost/happiness_db")
+engine = create_engine(f"postgresql+psycopg2://postgres:postgres@localhost/happiness_db")
 Base = automap_base()
 Base.prepare(engine,reflect=True)
 CountryReference = Base.classes.countryreference
