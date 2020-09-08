@@ -1,5 +1,5 @@
 $("#posttest").click(function() {
-    date = 2020
+    date = 2019
     $.ajax({
         type: 'POST',
         url: '/scatterdata',
@@ -13,7 +13,6 @@ $("#posttest").click(function() {
 });
 
 function getScatterData(data){
-    console.log(data)
     data.forEach(function(data){
         data[2]=+data[2]
         data[5]=+data[5]
@@ -23,13 +22,6 @@ function getScatterData(data){
         return row[2]
 
     });
-    console.log(data)
-    console.log(x_axis)
-    // var year= 2020;
-    // var filter_data=data.filter(function(row){
-    //     return row.year===year
-
-    // });
     x_axis=data.map(function(row){
         return row[5]
 
@@ -73,7 +65,7 @@ function getScatterData(data){
       };
 
   var layout = {
-    title: "Health Life Expectancy v. Happiness Rating 2016-2020",
+    title: `Health Life Expectancy v. Happiness Rating ${data[1][10]}`,
     font:{
         family: 'Courier New', 
         size:16,
