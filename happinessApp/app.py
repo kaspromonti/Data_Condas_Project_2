@@ -168,6 +168,7 @@ def survey():
 			session.add(newUserData)
 			session.commit()
 
+	session.close()
 	return render_template("survey.html")
 
 @app.route("/calculatescore") 
@@ -175,23 +176,106 @@ def calculatescore():
 	session = Session(engine)
 
 	countryDict = {}
-
 	countries = session.query(CountryReference.countryname).all()
-
 	for row in countries: 
 		countryDict.update({row[0]:0})
 
-	data = session.query(CountryReference.countryname, Alcohol.beer).\
-				filter(Alcohol.excountryid == CountryReference.incountryid).\
-				filter(and_(Alcohol.beer > Alcohol.wine, Alcohol.beer > Alcohol.spirits)).\
-				filter(CountryReference.region == 'South Asia').all()
+	userData = session.query(UserData).\
+					filter(UserData.id == 1).first()
 
-	for row in data: 
-		score = row[1]
-		if score < 90: 
-			countryDict.update({row[0]:10})
- 
+	countryDict = calculateAlcoholScore(userData, countryDict)
+	countryDict = calculateFitnessScore(userData, countryDict)
+
+	session.close()
 	return jsonify(countryDict)
+
+def calculateAlcoholScore(userData, countryDict):
+	session = Session(engine)
+
+	if userData.favalcohol == "beer":
+		countries = session.query(CountryReference.countryname, Alcohol.beer).\
+						   filter(CountryReference.incountryid == Alcohol.excountryid).\
+						   filter(and_(Alcohol.beer > Alcohol.wine, Alcohol.beer > Alcohol.spirits)).all()
+
+		for row in countries: 
+			if row[1] > 90: 
+				score = countryDict[row[0]]
+				score += 10 
+				countryDict.update({row[0]:score})
+			elif row[1] > 70: 
+				score = countryDict[row[0]]
+				score += 5
+				countryDict.update({row[0]:score})
+			elif row[1] > 55: 
+				score = countryDict[row[0]]
+				score += 1
+				countryDict.update({row[0]:score})
+
+	elif userData.favalcohol == "wine":
+		countries = session.query(CountryReference.countryname, Alcohol.wine).\
+						   filter(CountryReference.incountryid == Alcohol.excountryid).\
+						   filter(and_(Alcohol.wine > Alcohol.beer, Alcohol.wine > Alcohol.spirits)).all()
+
+		for row in countries: 
+			if row[1] > 90: 
+				score = countryDict[row[0]]
+				score += 10 
+				countryDict.update({row[0]:score})
+			elif row[1] > 70: 
+				score = countryDict[row[0]]
+				score += 5
+				countryDict.update({row[0]:score})
+			elif row[1] > 55: 
+				score = countryDict[row[0]]
+				score += 1
+				countryDict.update({row[0]:score})
+
+	elif userData.favalcohol == "spirits":
+		countries = session.query(CountryReference.countryname, Alcohol.spirits).\
+						   filter(CountryReference.incountryid == Alcohol.excountryid).\
+						   filter(and_(Alcohol.spirits > Alcohol.beer, Alcohol.spirits > Alcohol.wine)).all()
+
+		for row in countries: 
+			if row[1] > 90: 
+				score = countryDict[row[0]]
+				score += 10 
+				countryDict.update({row[0]:score})
+			elif row[1] > 70: 
+				score = countryDict[row[0]]
+				score += 5
+				countryDict.update({row[0]:score})
+			elif row[1] > 55: 
+				score = countryDict[row[0]]
+				score += 1
+				countryDict.update({row[0]:score})
+	return countryDict
+
+def calculateFitnessScore(userData, countryDict): 
+	session = Session(engine)
+
+	if userData.fitness == "Extremely Important":
+		countries = session.query(CountryReference.countryname, Fitness.healthgrade).\
+						   filter(CountryReference.incountryid == Fitness.excountryid).\
+						   filter(Fitness.healthgrade > 90).all()
+		for row in countries: 
+			score = countryDict[row[0]] 
+			score += 10 
+			countryDict.update({row[0]:score})
+	elif userData.fitness == "Somewhat Important": 
+		countries = session.query(CountryReference.countryname, Fitness.healthgrade).\
+						   filter(CountryReference.incountryid == Fitness.excountryid).\
+						   filter(and_(Fitness.healthgrade > 70, Fitness.healthgrade < 90)).all()
+		for row in countries: 
+			score = countryDict[row[0]] 
+			score += 5
+			countryDict.update({row[0]:score})
+
+	elif userData.fitness == "Not Very Important": 
+		for key in countryDict:
+			score = countryDict[key]
+			score += 1
+			countryDict.update({key:score})
+	return countryDict
 
 if __name__ == "__main__":
 	app.run(debug=True)
