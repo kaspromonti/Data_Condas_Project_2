@@ -1,7 +1,7 @@
 from flask import Flask, render_template, jsonify, request
 from sqlalchemy.ext.automap import automap_base 
 from sqlalchemy.ext.declarative import declarative_base 
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, and_
 from sqlalchemy.orm import Session
 
 app = Flask(__name__) 
@@ -24,7 +24,7 @@ UserData = Base.classes.userdata
 def index():
 	return render_template('index.html')
 
-@app.route("/chorandlinedata", methods=["GET","POST"]) 
+@app.route("/linedata", methods=["GET","POST"]) 
 def chorandlinedata(): 
 	session = Session(engine)
 	sel = [CountryReference.countryname,Happiness.happinessrating,Happiness.year]
@@ -169,6 +169,29 @@ def survey():
 			session.commit()
 
 	return render_template("survey.html")
+
+@app.route("/calculatescore") 
+def calculatescore():
+	session = Session(engine)
+
+	countryDict = {}
+
+	countries = session.query(CountryReference.countryname).all()
+
+	for row in countries: 
+		countryDict.update({row[0]:0})
+
+	data = session.query(CountryReference.countryname, Alcohol.beer).\
+				filter(Alcohol.excountryid == CountryReference.incountryid).\
+				filter(and_(Alcohol.beer > Alcohol.wine, Alcohol.beer > Alcohol.spirits)).\
+				filter(CountryReference.region == 'South Asia').all()
+
+	for row in data: 
+		score = row[1]
+		if score < 90: 
+			countryDict.update({row[0]:10})
+ 
+	return jsonify(countryDict)
 
 if __name__ == "__main__":
 	app.run(debug=True)
