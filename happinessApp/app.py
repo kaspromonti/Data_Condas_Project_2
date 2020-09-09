@@ -3,7 +3,7 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.ext.declarative import declarative_base 
 from sqlalchemy import create_engine, and_
 from sqlalchemy.orm import Session
-import operator
+from collections import Counter 
 
 app = Flask(__name__) 
 
@@ -117,7 +117,7 @@ def survey():
 			else:
 				healthcare = False
 
-			hoursworked = request.form.get("workhours")
+			hoursworked = request.form.get("Workhours")
 
 			gdppercapita = ""
 			if request.form.get("gdpextreme") != None:
@@ -182,7 +182,7 @@ def calculatescore():
 		countryDict.update({row[0]:0})
 
 	userData = session.query(UserData).\
-					filter(UserData.id == 1).first()
+					filter(UserData.id == 10).first()
 
 	countryDict = calculateAlcoholScore(userData, countryDict)
 	countryDict = calculateFitnessScore(userData, countryDict)
@@ -194,11 +194,20 @@ def calculatescore():
 	countryDict = calculateLifeChoiceScore(userData, countryDict)
 	countryDict = calculateGenerosityScore(userData, countryDict)
 	countryDict = calculateCorruptionScore(userData, countryDict)
+	countryDict = calculateSportScore(userData, countryDict)
+	countryDict = calculateWorkScore(userData, countryDict)
 
-	country = max(countryDict.items(), key=operator.itemgetter(1))[0]
+	k = Counter(countryDict)
+	topThree = k.most_common(3)
+	counter = 1 
+
 	print("-------------------------------------")
-	print("You would be happiest in " + country)
+	for row in topThree:
+		print(f"Country number {counter}: {row[0]} with a score of {row[1]}")
+		counter +=1
 	print("-------------------------------------")
+
+	
 
 	session.close()
 	return jsonify(countryDict)
@@ -262,6 +271,11 @@ def calculateAlcoholScore(userData, countryDict):
 				score = countryDict[row[0]]
 				score += 1
 				countryDict.update({row[0]:score})
+	elif userData.favalcohol == "I don't drink alcohol":
+		for key in countryDict:
+			score = countryDict[key]
+			score += 1
+			countryDict.update({key:score})
 	session.close()
 	return countryDict
 
@@ -530,6 +544,70 @@ def calculateCorruptionScore(userData, countryDict):
 			countryDict.update({key:score})
 	session.close()
 	return countryDict
+
+def calculateSportScore(userData, countryDict): 
+	session = Session(engine)
+
+	sport = userData.favsport
+	print(sport)
+
+	countries = session.query(CountryReference.countryname).\
+						filter(CountryReference.incountryid == Sports.excountryid).\
+						filter(Sports.sport == sport).all()
+
+	for row in countries: 
+		score = countryDict[row[0]] 
+		score += 10 
+		countryDict.update({row[0]:score})
+	session.close()
+	return countryDict
+
+def calculateWorkScore(userData, countryDict): 
+	session = Session(engine)
+
+	if userData.hoursworked == "Less than 10 Hours per Week":
+		countries = session.query(CountryReference.countryname).\
+						   filter(CountryReference.incountryid == Workhours.excountryid).\
+						   filter(Workhours.avghours < 10).all()
+		for row in countries: 
+			score = countryDict[row[0]] 
+			score += 10 
+			countryDict.update({row[0]:score})
+	elif userData.hoursworked == "11-20 Hours per Week":
+		countries = session.query(CountryReference.countryname).\
+						   filter(CountryReference.incountryid == Workhours.excountryid).\
+						   filter(and_(Workhours.avghours > 10, Workhours.avghours < 20)).all()
+		for row in countries: 
+			score = countryDict[row[0]] 
+			score += 10 
+			countryDict.update({row[0]:score})
+	elif userData.hoursworked == "21-30 Hours per Week":
+		countries = session.query(CountryReference.countryname).\
+						   filter(CountryReference.incountryid == Workhours.excountryid).\
+						   filter(and_(Workhours.avghours > 20, Workhours.avghours < 30)).all()
+		for row in countries: 
+			score = countryDict[row[0]] 
+			score += 10 
+			countryDict.update({row[0]:score})
+	elif userData.hoursworked == "31-40 Hours per Week":
+		countries = session.query(CountryReference.countryname).\
+						   filter(CountryReference.incountryid == Workhours.excountryid).\
+						   filter(and_(Workhours.avghours > 30, Workhours.avghours < 40)).all()
+		for row in countries: 
+			score = countryDict[row[0]] 
+			score += 10 
+			countryDict.update({row[0]:score})
+	elif userData.hoursworked == "40+ Hours per Week":
+		countries = session.query(CountryReference.countryname).\
+						   filter(CountryReference.incountryid == Workhours.excountryid).\
+						   filter(and_(Workhours.avghours > 40)).all()
+		for row in countries: 
+			score = countryDict[row[0]] 
+			score += 10 
+			countryDict.update({row[0]:score})
+	session.close()
+	return countryDict
+
 
 
 if __name__ == "__main__":
