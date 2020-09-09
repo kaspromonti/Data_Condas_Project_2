@@ -182,7 +182,7 @@ def calculatescore():
 		countryDict.update({row[0]:0})
 
 	userData = session.query(UserData).\
-					filter(UserData.id == 19).first()
+					order_by(UserData.id.desc()).first()
 
 	countryDict = calculateAlcoholScore(userData, countryDict)
 	countryDict = calculateFitnessScore(userData, countryDict)
