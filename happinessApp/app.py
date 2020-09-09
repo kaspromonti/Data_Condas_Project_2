@@ -185,6 +185,10 @@ def calculatescore():
 
 	countryDict = calculateAlcoholScore(userData, countryDict)
 	countryDict = calculateFitnessScore(userData, countryDict)
+	countryDict = calculateMaryMedScore(userData, countryDict)
+	countryDict = calculateMaryRecScore(userData, countryDict)
+	countryDict = calculateHeathcareScore(userData, countryDict)
+	countryDict = calculateGDPScore(userData, countryDict)
 
 	session.close()
 	return jsonify(countryDict)
@@ -206,7 +210,7 @@ def calculateAlcoholScore(userData, countryDict):
 				score = countryDict[row[0]]
 				score += 5
 				countryDict.update({row[0]:score})
-			elif row[1] > 55: 
+			else: 
 				score = countryDict[row[0]]
 				score += 1
 				countryDict.update({row[0]:score})
@@ -225,7 +229,7 @@ def calculateAlcoholScore(userData, countryDict):
 				score = countryDict[row[0]]
 				score += 5
 				countryDict.update({row[0]:score})
-			elif row[1] > 55: 
+			else: 
 				score = countryDict[row[0]]
 				score += 1
 				countryDict.update({row[0]:score})
@@ -244,10 +248,11 @@ def calculateAlcoholScore(userData, countryDict):
 				score = countryDict[row[0]]
 				score += 5
 				countryDict.update({row[0]:score})
-			elif row[1] > 55: 
+			else: 
 				score = countryDict[row[0]]
 				score += 1
 				countryDict.update({row[0]:score})
+	session.close()
 	return countryDict
 
 def calculateFitnessScore(userData, countryDict): 
@@ -275,6 +280,125 @@ def calculateFitnessScore(userData, countryDict):
 			score = countryDict[key]
 			score += 1
 			countryDict.update({key:score})
+	session.close()
+	return countryDict
+
+def calculateMaryMedScore(userData, countryDict):
+	session = Session(engine)
+
+	if userData.marijuanamedical == "Legal":
+		countries = session.query(CountryReference.countryname).\
+						   filter(CountryReference.incountryid == Marijuana.excountryid).\
+						   filter(Marijuana.medical == 'Legal').all()
+		for row in countries: 
+			score = countryDict[row[0]]
+			score += 10 
+			countryDict.update({row[0]:score})
+
+	elif userData.marijuanamedical == "Illegal": 
+		countries = session.query(CountryReference.countryname).\
+						   filter(CountryReference.incountryid == Marijuana.excountryid).\
+						   filter(Marijuana.medical == 'Illegal').all()
+		for row in countries: 
+			score = countryDict[row[0]] 
+			score += 10
+			countryDict.update({row[0]:score})
+
+	elif userData.marijuanamedical == "Decriminalize": 
+		countries = session.query(CountryReference.countryname).\
+						   filter(CountryReference.incountryid == Marijuana.excountryid).\
+						   filter(Marijuana.medical == 'Decriminalize').all()
+		for row in countries: 
+			score = countryDict[row[0]] 
+			score += 10
+			countryDict.update({row[0]:score})
+
+	session.close() 
+	return countryDict
+
+def calculateMaryRecScore(userData, countryDict):
+	session = Session(engine)
+
+	if userData.marijuanarec == "Legal":
+		countries = session.query(CountryReference.countryname).\
+						   filter(CountryReference.incountryid == Marijuana.excountryid).\
+						   filter(Marijuana.recreational == 'Legal').all()
+		for row in countries: 
+			score = countryDict[row[0]] 
+			score += 10 
+			countryDict.update({row[0]:score})
+
+	elif userData.marijuanarec == "Illegal": 
+		countries = session.query(CountryReference.countryname).\
+						   filter(CountryReference.incountryid == Marijuana.excountryid).\
+						   filter(Marijuana.recreational == 'Illegal').all()
+		for row in countries: 
+			score = countryDict[row[0]] 
+			score += 10
+			countryDict.update({row[0]:score})
+
+	elif userData.marijuanarec == "Decriminalize": 
+		countries = session.query(CountryReference.countryname).\
+						   filter(CountryReference.incountryid == Marijuana.excountryid).\
+						   filter(Marijuana.recreational == 'Decriminalize').all()
+		for row in countries: 
+			score = countryDict[row[0]] 
+			score += 10
+			countryDict.update({row[0]:score})
+
+	session.close() 
+	return countryDict
+
+def calculateHeathcareScore(userData, countryDict):
+	session = Session(engine)
+
+	if userData.unihealthcare == True: 
+		countries = session.query(CountryReference.countryname).\
+						   filter(CountryReference.incountryid == Healthcare.excountryid).\
+						   filter(Healthcare.hashealthcare == True).all()
+		for row in countries: 
+			score = countryDict[row[0]] 
+			score += 10
+			countryDict.update({row[0]:score})
+	else: 
+		countries = session.query(CountryReference.countryname).\
+						   filter(CountryReference.incountryid == Healthcare.excountryid).\
+						   filter(Healthcare.hashealthcare == False).all()
+		for row in countries: 
+			score = countryDict[row[0]] 
+			score += 10
+			countryDict.update({row[0]:score})
+
+	return countryDict
+
+def calculateGDPScore(userData, countryDict): 
+	session = Session(engine)
+
+	if userData.gdppercap == "Extremely Impactful":
+		countries = session.query(CountryReference.countryname).\
+						   filter(CountryReference.incountryid == Happiness.excountryid).\
+						   filter(Happiness.year == 2020).\
+						   filter(Happiness.gdppercapita > 1.0).all()
+		for row in countries: 
+			score = countryDict[row[0]] 
+			score += 10 
+			countryDict.update({row[0]:score})
+	elif userData.gdppercap == "Somewhat Impactful": 
+		countries = session.query(CountryReference.countryname).\
+						   filter(CountryReference.incountryid == Happiness.excountryid).\
+						   filter(Happiness.year == 2020).\
+						   filter(and_(Happiness.gdppercapita > 0.50, Happiness.gdppercapita < 1.0)).all()
+		for row in countries: 
+			score = countryDict[row[0]] 
+			score += 5
+			countryDict.update({row[0]:score})
+
+	elif userData.gdppercap == "Not Very Impactful": 
+		for key in countryDict:
+			score = countryDict[key]
+			score += 1
+			countryDict.update({key:score})
+	session.close()
 	return countryDict
 
 if __name__ == "__main__":
