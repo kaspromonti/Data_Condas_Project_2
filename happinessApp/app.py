@@ -3,6 +3,7 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.ext.declarative import declarative_base 
 from sqlalchemy import create_engine, and_
 from sqlalchemy.orm import Session
+import operator
 
 app = Flask(__name__) 
 
@@ -189,6 +190,15 @@ def calculatescore():
 	countryDict = calculateMaryRecScore(userData, countryDict)
 	countryDict = calculateHeathcareScore(userData, countryDict)
 	countryDict = calculateGDPScore(userData, countryDict)
+	countryDict = calculateSocialScore(userData, countryDict)
+	countryDict = calculateLifeChoiceScore(userData, countryDict)
+	countryDict = calculateGenerosityScore(userData, countryDict)
+	countryDict = calculateCorruptionScore(userData, countryDict)
+
+	country = max(countryDict.items(), key=operator.itemgetter(1))[0]
+	print("-------------------------------------")
+	print("You would be happiest in " + country)
+	print("-------------------------------------")
 
 	session.close()
 	return jsonify(countryDict)
@@ -400,6 +410,127 @@ def calculateGDPScore(userData, countryDict):
 			countryDict.update({key:score})
 	session.close()
 	return countryDict
+
+def calculateSocialScore(userData, countryDict): 
+	session = Session(engine)
+
+	if userData.socialenv == "Extremely Impactful":
+		countries = session.query(CountryReference.countryname).\
+						   filter(CountryReference.incountryid == Happiness.excountryid).\
+						   filter(Happiness.year == 2020).\
+						   filter(Happiness.socialsupport > 1.0).all()
+		for row in countries: 
+			score = countryDict[row[0]] 
+			score += 10 
+			countryDict.update({row[0]:score})
+	elif userData.socialenv == "Somewhat Impactful": 
+		countries = session.query(CountryReference.countryname).\
+						   filter(CountryReference.incountryid == Happiness.excountryid).\
+						   filter(Happiness.year == 2020).\
+						   filter(and_(Happiness.socialsupport > 0.50, Happiness.socialsupport < 1.0)).all()
+		for row in countries: 
+			score = countryDict[row[0]] 
+			score += 5
+			countryDict.update({row[0]:score})
+
+	elif userData.socialenv == "Not Very Impactful": 
+		for key in countryDict:
+			score = countryDict[key]
+			score += 1
+			countryDict.update({key:score})
+	session.close()
+	return countryDict
+
+def calculateLifeChoiceScore(userData, countryDict): 
+	session = Session(engine)
+
+	if userData.lifechoices == "Extremely Impactful":
+		countries = session.query(CountryReference.countryname).\
+						   filter(CountryReference.incountryid == Happiness.excountryid).\
+						   filter(Happiness.year == 2020).\
+						   filter(Happiness.freedomlifechoice > 0.4).all()
+		for row in countries: 
+			score = countryDict[row[0]] 
+			score += 10 
+			countryDict.update({row[0]:score})
+	elif userData.lifechoices == "Somewhat Impactful": 
+		countries = session.query(CountryReference.countryname).\
+						   filter(CountryReference.incountryid == Happiness.excountryid).\
+						   filter(Happiness.year == 2020).\
+						   filter(and_(Happiness.freedomlifechoice > 0.20, Happiness.freedomlifechoice < 0.4)).all()
+		for row in countries: 
+			score = countryDict[row[0]] 
+			score += 5
+			countryDict.update({row[0]:score})
+
+	elif userData.lifechoices == "Not Very Impactful": 
+		for key in countryDict:
+			score = countryDict[key]
+			score += 1
+			countryDict.update({key:score})
+	session.close()
+	return countryDict
+
+def calculateGenerosityScore(userData, countryDict): 
+	session = Session(engine)
+
+	if userData.generosity == "Extremely Impactful":
+		countries = session.query(CountryReference.countryname).\
+						   filter(CountryReference.incountryid == Happiness.excountryid).\
+						   filter(Happiness.year == 2020).\
+						   filter(Happiness.generosity > 0.5).all()
+		for row in countries: 
+			score = countryDict[row[0]] 
+			score += 10 
+			countryDict.update({row[0]:score})
+	elif userData.generosity == "Somewhat Impactful": 
+		countries = session.query(CountryReference.countryname).\
+						   filter(CountryReference.incountryid == Happiness.excountryid).\
+						   filter(Happiness.year == 2020).\
+						   filter(and_(Happiness.generosity > 0.20, Happiness.generosity < 0.5)).all()
+		for row in countries: 
+			score = countryDict[row[0]] 
+			score += 5
+			countryDict.update({row[0]:score})
+
+	elif userData.generosity == "Not Very Impactful": 
+		for key in countryDict:
+			score = countryDict[key]
+			score += 1
+			countryDict.update({key:score})
+	session.close()
+	return countryDict
+
+def calculateCorruptionScore(userData, countryDict): 
+	session = Session(engine)
+
+	if userData.govtrust == "Extremely Impactful":
+		countries = session.query(CountryReference.countryname).\
+						   filter(CountryReference.incountryid == Happiness.excountryid).\
+						   filter(Happiness.year == 2020).\
+						   filter(Happiness.perceptionofcorruption > 0.5).all()
+		for row in countries: 
+			score = countryDict[row[0]] 
+			score += 10 
+			countryDict.update({row[0]:score})
+	elif userData.govtrust == "Somewhat Impactful": 
+		countries = session.query(CountryReference.countryname).\
+						   filter(CountryReference.incountryid == Happiness.excountryid).\
+						   filter(Happiness.year == 2020).\
+						   filter(and_(Happiness.perceptionofcorruption > 0.10, Happiness.perceptionofcorruption < 0.5)).all()
+		for row in countries: 
+			score = countryDict[row[0]] 
+			score += 5
+			countryDict.update({row[0]:score})
+
+	elif userData.govtrust == "Not Very Impactful": 
+		for key in countryDict:
+			score = countryDict[key]
+			score += 1
+			countryDict.update({key:score})
+	session.close()
+	return countryDict
+
 
 if __name__ == "__main__":
 	app.run(debug=True)
