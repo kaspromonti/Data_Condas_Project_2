@@ -182,7 +182,7 @@ def calculatescore():
 		countryDict.update({row[0]:0})
 
 	userData = session.query(UserData).\
-					filter(UserData.id == 10).first()
+					filter(UserData.id == 19).first()
 
 	countryDict = calculateAlcoholScore(userData, countryDict)
 	countryDict = calculateFitnessScore(userData, countryDict)
@@ -198,7 +198,7 @@ def calculatescore():
 	countryDict = calculateWorkScore(userData, countryDict)
 
 	k = Counter(countryDict)
-	topThree = k.most_common(3)
+	topThree = k.most_common(10)
 	counter = 1 
 
 	print("-------------------------------------")
@@ -549,7 +549,6 @@ def calculateSportScore(userData, countryDict):
 	session = Session(engine)
 
 	sport = userData.favsport
-	print(sport)
 
 	countries = session.query(CountryReference.countryname).\
 						filter(CountryReference.incountryid == Sports.excountryid).\
