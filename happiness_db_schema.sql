@@ -5,8 +5,10 @@ DROP TABLE IF EXISTS Fitness;
 DROP TABLE IF EXISTS Sports;
 DROP TABLE IF EXISTS HealthCare;
 DROP TABLE IF EXISTS WorkHours;
+DROP TABLE IF EXISTS Coordinates;
 DROP TABLE IF EXISTS CountryReference;
 DROP TABLE IF EXISTS userData; 
+
 
 CREATE TABLE CountryReference (
 	InCountryID SERIAL PRIMARY KEY,
@@ -76,6 +78,14 @@ CREATE TABLE WorkHours (
 	avgHours FLOAT,
 	FOREIGN KEY (ExCountryID) REFERENCES CountryReference (InCountryID)
 );
+
+CREATE TABLE coordinates(
+	ID SERIAL PRIMARY KEY,
+	ExCountryID INTEGER,
+	latitude FLOAT,
+	longitude FLOAT,
+	FOREIGN KEY (ExCountryID) REFERENCES CountryReference (InCountryID)
+	);
 
 CREATE Table userdata(
 	id serial PRIMARY KEY, 
