@@ -3,7 +3,8 @@ $(function() {
     type: "GET",
     url: "/calculatescore",
     success: function(data){
-      generateTable(data)
+      var newData =  parseTableData(data)
+      generateTable(newData)
     }
   });
 });
@@ -73,8 +74,33 @@ function generateTable(data){
       Object.entries(results).forEach(function([key,value]){
         var cell = row.append("td"); 
         cell.text(value);
+        console.log(`key:${key}, value:${value}`)
       });
     });
 
 };
-generateTable(tableData);
+
+function parseTableData(data){ 
+  var returnList = []
+    data.forEach(function(row){
+      var country = {
+        "country": row.country, 
+        "gdp": row.gdp, 
+        "generosity": row.generosity, 
+        "healthgrade": row.healthgrade, 
+        "lifechoice": row.lifechoice, 
+        "social": row.social, 
+        "lifeexp": row.lifeexp, 
+        "corruption": row.corruption, 
+        "beer": row.beer, 
+        "wine": row.wine, 
+        "spirits": row.spirits, 
+        "marymed": row.marymed, 
+        "maryrec": row.maryrec, 
+        "sports": row.sports, 
+        "work": row.work
+      }
+      returnList.push(country)
+    }); 
+  return returnList
+}

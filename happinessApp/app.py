@@ -194,8 +194,6 @@ def calculatescore():
 	k = Counter(countryDict)
 	topFive = k.most_common(5)
 
-	print(topFive)
-
 	returnList = []
 	count = 1
 	for row in topFive: 
