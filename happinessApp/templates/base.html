@@ -22,18 +22,6 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/metrics-graphics/2.15.6/metricsgraphics.min.js"></script>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/minty/bootstrap.min.css" integrity="sha384-H4X+4tKc7b8s4GoMrylmy2ssQYpDHoqzPa9aKXbDwPoPUA3Ra8PA5dGzijN+ePnH" crossorigin="anonymous">
-
-    <script>
-    	$(document).ready(function(){
-    		$('#surveydata input[type="text]').blur(function(){
-    			if(!$(this).val()){
-    				$(this).addClass("error");
-    			}else {
-    				$(this).removeClass("error");
-    			}
-    		});
-    	});
-    </script>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -41,13 +29,7 @@
 		<button class="navbar-toggler" type="button" data-toggler="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 	</nav>
 	<div id="content">{% block content %}{% endblock %}</div>
-	<div id="line"></div>
-	<select id="happinessfactor">
-		<option value="GDP">GDP</option>
-		<option value="Social Support">Social Support</option>
-		<option value="Health Life Expectancy">Health Life Expectancy</option>
-		<option value="Freedom Life">Freedom Life</option>
-	  </select>
+	
 	
 	<!-- <script type="text/javascript" src="static/js/test.js"></script> -->
 	<script type="text/javascript" src="static/js/graphs.js"></script>

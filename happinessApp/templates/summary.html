@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<script>
+	$(function() {
+	$.ajax({
+		type: "GET",
+		url: "/calculatescore",
+		success: function(data){
+			console.log(data)
+		}
+	});
+});
+</script>
+{% endblock %}

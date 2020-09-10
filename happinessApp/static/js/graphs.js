@@ -26,23 +26,24 @@ $(function() {
 // function factor_drop(){
 //     var dropdownMenu=d3.
 
-// }
-$("#happinessfactor").click(function() {
-    date=2020
-    $.ajax({
-        type: 'POST',
-        url: '/scatterdata',
-        datatype: 'json',
-        data: JSON.stringify(date),
-        contentType:"application/json",
-        success: function(data){
-            getScatterData(data);
-            console.log(data)
-        }
-    });
-});
-d3.selectAll("#happinessfactor").on("change",getScatterData)
+
+// $("#happinessfactor").change(function() {
+//     date=2020
+//     $.ajax({
+//         type: 'POST',
+//         url: '/scatterdata',
+//         datatype: 'json',
+//         data: JSON.stringify(date),
+//         contentType:"application/json",
+//         success: function(data){
+//             getScatterData(data);
+//             console.log(data)
+//         }
+//     });
+// });
+// d3.selectAll("#happinessfactor").on("change",getScatterData)
 function getScatterData(data){
+    console.log(data)
     var dropdownMenu=d3.select("#happinessfactor").property("value")
  //   console.log(dropdownMenu)
  var column_number=0

@@ -18,6 +18,7 @@ Healthcare = Base.classes.healthcare
 Marijuana = Base.classes.marijuana
 Sports = Base.classes.sports
 Workhours = Base.classes.workhours
+Coordinates = Base.classes.coordinates
 UserData = Base.classes.userdata
 
 @app.route('/')
@@ -64,8 +65,8 @@ def scatterdata():
 
 @app.route("/survey", methods=["GET", "POST"])
 def survey():
-	session = Session(engine)
 	if request.method == "POST":
+		session = Session(engine)
 		if request.form.get("firstname") != "":
 			fname = ""
 			fName = request.form.get("firstname")
@@ -161,7 +162,8 @@ def survey():
 			session.add(newUserData)
 			session.commit()
 
-	session.close()
+		session.close()
+		return redirect("summary")
 	return render_template("survey.html")
 
 @app.route("/calculatescore") 
@@ -190,11 +192,54 @@ def calculatescore():
 	countryDict = calculateWorkScore(userData, countryDict)
 
 	k = Counter(countryDict)
-	topThree = k.most_common(10)
+	topFive = k.most_common(5)
+
+	print(topFive)
+
+	returnList = []
+	count = 1
+	for row in topFive: 
+		country = row[0]
+		sel = [CountryReference.countryname,Coordinates.latitude, Coordinates.longitude, Happiness.gdppercapita, Happiness.socialsupport,
+				Happiness.healthylifeexpectancy, Happiness.freedomlifechoice, Happiness.generosity, Happiness.perceptionofcorruption,
+				 Alcohol.beer, Alcohol.wine, Alcohol.spirits, Fitness.healthgrade, Marijuana.recreational, Marijuana.medical,
+				 Sports.sport, Workhours.avghours]
+
+		data = session.query(*sel).\
+					  outerjoin(Coordinates, CountryReference.incountryid == Coordinates.excountryid).\
+					  outerjoin(Happiness,CountryReference.incountryid == Happiness.excountryid).\
+					  outerjoin(Alcohol,CountryReference.incountryid == Alcohol.excountryid).\
+					  outerjoin(Fitness,CountryReference.incountryid == Fitness.excountryid).\
+					  outerjoin(Marijuana,CountryReference.incountryid == Marijuana.excountryid).\
+					  outerjoin(Sports,CountryReference.incountryid == Sports.excountryid).\
+					  outerjoin(Workhours,CountryReference.incountryid == Workhours.excountryid).\
+					  filter(CountryReference.countryname == country).first()
+
+		countryData = {"Country":data[0], 
+					  "rank": count, 
+					  "latitude": data[1], 
+					  "longitude": data[2], 
+					  "gdp": data[3], 
+					  "social": data[4], 
+					  "lifeexp": data[5], 
+					  "lifechoice": data[6], 
+					  "generosity": data[7],
+					  "corruption": data[8], 
+					  "beer": data[9], 
+					  "wine": data[10],
+					  "spirits": data[11], 
+					  "healthgrade": data[12], 
+					  "marymed": data[13], 
+					  "maryrec": data[14], 
+					  "sports": data[15], 
+					  "work": data[16]
+		}
+		count+=1
+		returnList.append(countryData)
+						
 	
-	print(topThree)
 	session.close()
-	return redirect("/summary", data=topThree)
+	return jsonify(returnList)
 
 @app.route("/summary")
 def summary():
