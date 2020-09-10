@@ -41,8 +41,16 @@
 		<button class="navbar-toggler" type="button" data-toggler="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 	</nav>
 	<div id="content">{% block content %}{% endblock %}</div>
-
+	<div id="line"></div>
+	<select id="happinessfactor">
+		<option value="GDP">GDP</option>
+		<option value="Social Support">Social Support</option>
+		<option value="Health Life Expectancy">Health Life Expectancy</option>
+		<option value="Freedom Life">Freedom Life</option>
+	  </select>
+	
 	<!-- <script type="text/javascript" src="static/js/test.js"></script> -->
 	<script type="text/javascript" src="static/js/graphs.js"></script>
+
 </body>
 </html>
