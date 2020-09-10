@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, redirect
 from sqlalchemy.ext.automap import automap_base 
 from sqlalchemy.ext.declarative import declarative_base 
 from sqlalchemy import create_engine, and_
@@ -67,7 +67,9 @@ def survey():
 	session = Session(engine)
 	if request.method == "POST":
 		if request.form.get("firstname") != "":
-			fName = request.form.get("firstname") 
+			fname = ""
+			fName = request.form.get("firstname")
+			lName = "" 
 			lName = request.form.get("lastname")
 			zipcode = request.form.get("zipcode")
 			email = request.form.get("email")
@@ -77,7 +79,6 @@ def survey():
 			region = request.form.get("region")
 			sport = request.form.get("sports")
 
-			alcohol = ""
 			if request.form.get("beer") != None:
 				alcohol = "beer"
 			elif request.form.get("wine") != None:
@@ -87,7 +88,6 @@ def survey():
 			elif request.form.get("dontdrink") != None:
 				alcohol = "none"
 
-			fit = ""
 			if request.form.get("fitextreme") != None:
 				fit = "Extremely Important"
 			elif request.form.get("fitsomewhat") != None:
@@ -95,7 +95,6 @@ def survey():
 			elif request.form.get("fitnot") != None:
 				fit = "Not Very Important"
 
-			maryMed = ""
 			if request.form.get("medlegal") != None:
 				maryMed = "Legal"
 			elif request.form.get("meddecrim") != None:
@@ -103,7 +102,6 @@ def survey():
 			elif request.form.get("medillegal") != None:
 				maryMed = "Illegal"
 
-			maryRec = ""
 			if request.form.get("reclegal") != None:
 				maryRec = "Legal"
 			elif request.form.get("recdecrim") != None:
@@ -111,7 +109,6 @@ def survey():
 			elif request.form.get("recillegal") != None:
 				maryRec = "Illegal"
 
-			healthcare = "" 
 			if request.form.get("htrue") != None:
 				healthcare = True
 			else:
@@ -119,7 +116,6 @@ def survey():
 
 			hoursworked = request.form.get("Workhours")
 
-			gdppercapita = ""
 			if request.form.get("gdpextreme") != None:
 				gdppercapita = "Extremely Impactful"
 			elif request.form.get("gdpsomewhat") != None:
@@ -127,7 +123,6 @@ def survey():
 			elif request.form.get("gdpnot") != None:
 				gdppercapita = "Not Very Impactful"
 
-			social = ""
 			if request.form.get("socialextreme") != None:
 				social = "Extremely Impactful"
 			elif request.form.get("socialsomewhat") != None:
@@ -135,7 +130,6 @@ def survey():
 			elif request.form.get("socialnot") != None:
 				social = "Not Very Impactful"
 
-			lifechoices = ""
 			if request.form.get("lifeextreme") != None:
 				lifechoices = "Extremely Impactful"
 			elif request.form.get("lifesomewhat") != None:
@@ -143,7 +137,6 @@ def survey():
 			elif request.form.get("lifenot") != None:
 				lifechoices = "Not Very Impactful"
 
-			generosity = ""
 			if request.form.get("genextreme") != None:
 				generosity = "Extremely Impactful"
 			elif request.form.get("gensomewhat") != None:
@@ -151,7 +144,6 @@ def survey():
 			elif request.form.get("gennot") != None:
 				generosity = "Not Very Impactful"
 
-			govTrust = ""
 			if request.form.get("govextreme") != None:
 				govTrust  = "Extremely Impactful"
 			elif request.form.get("govsomewhat") != None:
@@ -199,18 +191,14 @@ def calculatescore():
 
 	k = Counter(countryDict)
 	topThree = k.most_common(10)
-	counter = 1 
-
-	print("-------------------------------------")
-	for row in topThree:
-		print(f"Country number {counter}: {row[0]} with a score of {row[1]}")
-		counter +=1
-	print("-------------------------------------")
-
 	
-
+	print(topThree)
 	session.close()
-	return jsonify(countryDict)
+	return redirect("/summary", data=topThree)
+
+@app.route("/summary")
+def summary():
+	return render_template("summary.html")
 
 def calculateAlcoholScore(userData, countryDict):
 	session = Session(engine)
@@ -221,11 +209,11 @@ def calculateAlcoholScore(userData, countryDict):
 						   filter(and_(Alcohol.beer > Alcohol.wine, Alcohol.beer > Alcohol.spirits)).all()
 
 		for row in countries: 
-			if row[1] > 90: 
+			if row[1] > 66: 
 				score = countryDict[row[0]]
 				score += 10 
 				countryDict.update({row[0]:score})
-			elif row[1] > 70: 
+			elif row[1] > 33 and row[1] < 67: 
 				score = countryDict[row[0]]
 				score += 5
 				countryDict.update({row[0]:score})
@@ -240,11 +228,11 @@ def calculateAlcoholScore(userData, countryDict):
 						   filter(and_(Alcohol.wine > Alcohol.beer, Alcohol.wine > Alcohol.spirits)).all()
 
 		for row in countries: 
-			if row[1] > 90: 
+			if row[1] > 66: 
 				score = countryDict[row[0]]
 				score += 10 
 				countryDict.update({row[0]:score})
-			elif row[1] > 70: 
+			elif row[1] > 33 and row[1] < 67: 
 				score = countryDict[row[0]]
 				score += 5
 				countryDict.update({row[0]:score})
@@ -259,11 +247,11 @@ def calculateAlcoholScore(userData, countryDict):
 						   filter(and_(Alcohol.spirits > Alcohol.beer, Alcohol.spirits > Alcohol.wine)).all()
 
 		for row in countries: 
-			if row[1] > 90: 
+			if row[1] > 66: 
 				score = countryDict[row[0]]
 				score += 10 
 				countryDict.update({row[0]:score})
-			elif row[1] > 70: 
+			elif row[1] > 33 and row[1] < 67:  
 				score = countryDict[row[0]]
 				score += 5
 				countryDict.update({row[0]:score})
@@ -285,7 +273,7 @@ def calculateFitnessScore(userData, countryDict):
 	if userData.fitness == "Extremely Important":
 		countries = session.query(CountryReference.countryname, Fitness.healthgrade).\
 						   filter(CountryReference.incountryid == Fitness.excountryid).\
-						   filter(Fitness.healthgrade > 90).all()
+						   filter(Fitness.healthgrade > 80).all()
 		for row in countries: 
 			score = countryDict[row[0]] 
 			score += 10 
@@ -293,7 +281,7 @@ def calculateFitnessScore(userData, countryDict):
 	elif userData.fitness == "Somewhat Important": 
 		countries = session.query(CountryReference.countryname, Fitness.healthgrade).\
 						   filter(CountryReference.incountryid == Fitness.excountryid).\
-						   filter(and_(Fitness.healthgrade > 70, Fitness.healthgrade < 90)).all()
+						   filter(and_(Fitness.healthgrade > 70)).all()
 		for row in countries: 
 			score = countryDict[row[0]] 
 			score += 5

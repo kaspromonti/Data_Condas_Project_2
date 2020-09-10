@@ -294,9 +294,19 @@
 		</div><br>
 		<div class="row">
 			<div class= "col-md-2">
-				<button type="submit" class="btn btn-success btn-block submit">Submit</button>
+				<button type="submit" class="btn btn-success btn-block submit" id="submit">Submit</button>
 			</div>
 		</div><br>
+		<script>$("#submit").click(function(){
+			$.ajax({
+				type: "GET", 
+				url: "/calculatescore",
+				success: function(){
+					return
+				}
+			});
+		});
+		</script>
  	</form>
 </div>
 {% endblock %}
