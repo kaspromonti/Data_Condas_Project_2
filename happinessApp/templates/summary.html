@@ -1,19 +1,34 @@
 {% extends "base.html" %}
 {% block content %}
-<!-- <script>
-	$(function() {
-	$.ajax({
-		type: "GET",
-		url: "/calculatescore",
-		success: function(data){
-			console.log(data)
-		}
-	});
-});
-</script> -->
 
   <div id="map"></div>
   <div id="chart"></div>
+  <div class="row"> 
+  	<div class="col-md-12"> 
+  		<table class="table table-striped"> 
+  			<thead>
+  				<tr> 
+  					<th class="table-head>">Beer</th>
+  					<th class="table-head>">Corruption</th>
+  					<th class="table-head>">Country</th>
+  					<th class="table-head>">GDP</th>
+  					<th class="table-head>">Generosity</th>
+  					<th class="table-head>">Health Grade</th>
+  					<th class="table-head>">Latitude</th>
+  					<th class="table-head>">Longitude</th>
+  					<th class="table-head>">Life Choice</th>
+  					<th class="table-head>">Life Expectency</th>
+  					<th class="table-head>">Longitude</th>
+  					<th class="table-head>">Marijuana Medical</th>
+  					<th class="table-head>">Marijuana Rec</th>
+  					<th class="table-head>">Social</th>
+  					<th class="table-head>">Spirits</th>
+  					<th class="table-head>">Sports</th>
+  					<th class="table-head>">Wine</th>
+  					<th class="table-head>">Work Hours</th>
+  				</tr>
+  			</thead>
+  			<tbody id="tablebody"></tbody>
+  		</table>
 
-  
 {% endblock %}
