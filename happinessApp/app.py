@@ -215,7 +215,7 @@ def calculatescore():
 					  outerjoin(Workhours,CountryReference.incountryid == Workhours.excountryid).\
 					  filter(CountryReference.countryname == country).first()
 
-		countryData = {"Country":data[0], 
+		countryData = {"country":data[0], 
 					  "rank": count, 
 					  "latitude": data[1], 
 					  "longitude": data[2], 
