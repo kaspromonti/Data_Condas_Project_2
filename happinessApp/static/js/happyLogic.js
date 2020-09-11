@@ -5,12 +5,38 @@ $(function() {
     success: function(data){
       var newData =  parseTableData(data)
       generateTable(newData)
+      console.log(data)
     }
   });
 });
 
+// function generateMap(){ 
+//   // Create a map object
+//   var myMap = L.map("map", {
+//     center: [0, -0],
+//     zoom: 1.25
+//   });
 
-// // Create a map object
+//   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+//   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+//   tileSize: 512,
+//   maxZoom: 18,
+//   zoomOffset: -1,
+//   id: "mapbox/streets-v11",
+//   accessToken: "pk.eyJ1IjoibWFya3A4NjIiLCJhIjoiY2tlYWliM3FvMDB1dDJ4cGxnZTI3YmtsOSJ9.DiRQBhHccs6E4ZbgJfra-A"
+//   }).addTo(myMap);
+
+//   var darkmap = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+//   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+//   maxZoom: 18,
+//   id: 'mapbox/light-v10',
+//   tileSize: 512,
+//   zoomOffset: -1,
+//   accessToken: "pk.eyJ1IjoibWFya3A4NjIiLCJhIjoiY2tlYWliM3FvMDB1dDJ4cGxnZTI3YmtsOSJ9.DiRQBhHccs6E4ZbgJfra-A"
+//   }).addTo(myMap);
+// }
+
+// Create a map object
 // var myMap = L.map("map", {
 //   center: [0, -0],
 //   zoom: 1.25
@@ -31,7 +57,7 @@ $(function() {
 //   id: 'mapbox/light-v10',
 //   tileSize: 512,
 //   zoomOffset: -1,
-//   accessToken: API_KEY
+//   accessToken: "pk.eyJ1IjoibWFya3A4NjIiLCJhIjoiY2tlYWliM3FvMDB1dDJ4cGxnZTI3YmtsOSJ9.DiRQBhHccs6E4ZbgJfra-A"
 //   }).addTo(myMap);
 
 
