@@ -27,9 +27,10 @@ $(function() {
 });
 function getScatterData(data, dropdownMenu){
 
-  $('#factorlist a').on('click', function(){
+  $('#factorlist a').on('click', function(event){
     var dropdownMenu = $(this).text();
     getScatterData(data,dropdownMenu)
+    event.preventDefault();
 
 });
  var column_number=0
