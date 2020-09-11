@@ -1,6 +1,9 @@
 # Project_2 M2K (formerly known as The Data Condas)
 ### Mark Pasrich, Melissa Hazelgreen, and Kristin Aspromonti Submitted 9/13/2020
 
+## Objective
+The objective is to create a product that will help a person determine in which country they would be the happiest living.
+
 # Background
 This product was inspired from the World Happiness Report (WHR) published on March 20, 2020. This report is published annually by the United Nations Sustainable Development Solutions Network. Using the Gallop World Poll, individuals around the world are surveyed on 6 Key variables:
 
@@ -12,9 +15,6 @@ This product was inspired from the World Happiness Report (WHR) published on Mar
  * Perception of Corruption
 
 The scores are based on individuals’ own assessments of their lives using the Cantril Ladder (scale from 0-10), where the top represents the best possible and the bottom the worst possible life for themselves.
-
- ## Objective
-The objective is to create a product that will help a person determine in which country they would be the happiest living.
 
  # Our Approach
 Using the WHR as our baseline for happiness, we supplemented the 6 criteria, seeking additional preferences the user may want to consider when determining their optimal living locale. Using the various resources listed below, 6 additional happiness factors are to be evaluated: 
