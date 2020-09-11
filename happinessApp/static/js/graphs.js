@@ -167,7 +167,7 @@ function getlineData(data){
         family: 'Courier New', 
         size:16,
     },
-    yaxis: { title: "Happiness Rating"},
+    yaxis: { title: "Average Happiness Rating"},
         font:{
             family:'Courier New',
             size:12
