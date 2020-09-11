@@ -20,6 +20,7 @@ Sports = Base.classes.sports
 Workhours = Base.classes.workhours
 Coordinates = Base.classes.coordinates
 UserData = Base.classes.userdata
+UserResults = Base.classes.userresults
 
 @app.route('/')
 @app.route('/index')
@@ -178,6 +179,7 @@ def calculatescore():
 	userData = session.query(UserData).\
 					order_by(UserData.id.desc()).first()
 
+
 	countryDict = calculateAlcoholScore(userData, countryDict)
 	countryDict = calculateFitnessScore(userData, countryDict)
 	countryDict = calculateMaryMedScore(userData, countryDict)
@@ -193,6 +195,14 @@ def calculatescore():
 
 	k = Counter(countryDict)
 	topFive = k.most_common(5)
+
+
+	for row in topFive: 
+		excountryid = session.query(CountryReference.incountryid).\
+							filter(CountryReference.countryname == row[0]).first()
+		newResultData = UserResults(exuserid=userData.id,excountryid=excountryid,score=row[1])
+		session.add(newResultData)
+		session.commit()
 
 	returnList = []
 	count = 1
