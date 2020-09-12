@@ -333,7 +333,7 @@ def calculateFitnessScore(userData, countryDict):
 	elif userData.fitness == "Somewhat Important": 
 		countries = session.query(CountryReference.countryname, Fitness.healthgrade).\
 						   filter(CountryReference.incountryid == Fitness.excountryid).\
-						   filter(and_(Fitness.healthgrade > 70)).all()
+						   filter(Fitness.healthgrade > 70).all()
 		for row in countries: 
 			score = countryDict[row[0]] 
 			score += 5
