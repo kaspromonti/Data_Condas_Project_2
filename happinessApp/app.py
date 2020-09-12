@@ -210,7 +210,7 @@ def calculatescore():
 		points = row[1]
 		sel = [CountryReference.countryname,Coordinates.latitude, Coordinates.longitude, Happiness.gdppercapita, Happiness.socialsupport,
 				Happiness.healthylifeexpectancy, Happiness.freedomlifechoice, Happiness.generosity, Happiness.perceptionofcorruption,
-				 Alcohol.beer, Alcohol.wine, Alcohol.spirits, Fitness.healthgrade, Marijuana.recreational, Marijuana.medical,
+				 Alcohol.beer, Alcohol.wine, Alcohol.spirits, Fitness.healthgrade,Marijuana.medical, Marijuana.recreational,
 				 Sports.sport, Workhours.avghours]
 
 		data = session.query(*sel).\

@@ -6,7 +6,8 @@ $(function() {
     success: function(data){
       var newData =  parseTableData(data)
       generateTable(newData)
-      createMap(data)
+      placeHeader(data)
+      // createMap(data)
     }
   });
 });
@@ -16,19 +17,23 @@ function createMap(data) {
   // Create the tile layer that will be the background of our map
   var map = L.map("map", {
     center: [40.73, -74.0059],
-    zoom: 12,
+    zoom: 2,
     // layers: [lightmap, data]
   });
 
 //world map
-  var lightmap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
-    attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
+  var lightmap = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     tileSize: 512,
     maxZoom: 18,
     zoomOffset: -1,
     id: "mapbox/streets-v11",
     accessToken: "pk.eyJ1IjoibWZtNTEwNSIsImEiOiJja2VhaXlsY20wMTB0MnFvYnBlYnBxb28wIn0.URAgQMLtdtlVGg4APwqb0w"
   }).addTo(map);
+
+  var baseMaps = {
+  light: lightmap
+}
 
   // Initialize an array to hold  markers
   var mapMarkers = [];
@@ -55,8 +60,6 @@ console.log(mapMarkers)
 // }
 }
 
-
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
  //Attempting to use Mark's function to pull the table
@@ -76,6 +79,7 @@ function generateTable(data){
 function parseTableData(data){ 
   var returnList = []
     data.forEach(function(row){
+      console.log(row.marymed)
       var country = {
         "country": row.country, 
         "gdp": row.gdp, 
@@ -96,4 +100,10 @@ function parseTableData(data){
       returnList.push(country)
     }); 
   return returnList
+}
+  
+function placeHeader(data){
+  var countryName = data[0].country
+  $("#country").text(`Your Ideal Country is ${countryName}`)
+
 }
