@@ -154,9 +154,6 @@ def survey():
 			elif request.form.get("govnot") != None:
 				govTrust  = "Not Very Impactful"
 
-
-
-
 			newUserData = UserData(firstname=fName,lastname=lName,zipcode=zipcode, email=email, gender=gender,age=age,
 								   income=income, favregion=region,favsport=sport,favalcohol=alcohol,fitness=fit, 
 								   marijuanamedical=maryMed, marijuanarec=maryRec, unihealthcare=healthcare, hoursworked=hoursworked, 
