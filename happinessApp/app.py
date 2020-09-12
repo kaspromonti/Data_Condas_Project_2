@@ -74,6 +74,7 @@ def survey():
 			lName = "" 
 			lName = request.form.get("lastname")
 			zipcode = request.form.get("zipcode")
+			email = ""
 			email = request.form.get("email")
 			gender = request.form.get("gender")
 			age = request.form.get("age")
